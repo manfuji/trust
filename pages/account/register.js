@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/dist/client/router";
 import { useEffect, useState } from "react";
-import { appState } from "../context/Context";
+import { appState } from "../../components/context/Context";
 
 function Register() {
 

@@ -1,6 +1,6 @@
 import "tailwindcss/tailwind.css";
 import Layout from "../components/Layout/Layout";
-import Context from "./context/Context";
+import Context from "../components/context/Context";
 
 function MyApp({ Component, pageProps }) {
   return (

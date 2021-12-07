@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import logo from "../../public/LOGO.jpg";
 import Link from "next/link";
 import { MenuIcon,ShoppingCartIcon, StopIcon,  } from "@heroicons/react/solid";
-import { appState } from "../../pages/context/Context";
+import { appState } from "../context/Context";
 import { useRouter } from "next/dist/client/router";
 import UserDropdown from "../UserDropdown";
-import { LOGOUT } from "../../pages/context/Types";
+import { LOGOUT } from "../context/Types";
 import axios from "axios";
 function Header() {
   const {user,dispatch} = appState();

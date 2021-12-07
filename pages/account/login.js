@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useRouter } from "next/dist/client/router";
 import { useEffect, useState } from "react";
-import { appState } from "../context/Context";
-import { AUTH } from "../context/Types";
+import { appState } from "../../components/context/Context";
+import { AUTH } from "../../components/context/Types";
 
 function Login() {
   const { dispatch, user } = appState();

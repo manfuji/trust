@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { appState } from "../../pages/context/Context";
+import { appState } from "../context/Context";
 import Link from "next/link"
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../../pages/context/Types";
+import { ADD_TO_CART, REMOVE_FROM_CART } from "../context/Types";
 const Card = ({ product, prod }) => {
   const {
     user: { cart },

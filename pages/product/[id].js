@@ -3,8 +3,8 @@ import { useRouter } from "next/dist/client/router";
 import { useEffect, useState } from "react";
 import pro1 from "../../public/Trust/CHILLIPEPPER.jpg";
 import Image from "next/image";
-import { appState } from "../context/Context";
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../context/Types";
+import { appState } from "../../components/context/Context";
+import { ADD_TO_CART, REMOVE_FROM_CART } from "../../components/context/Types";
 const singleProduct = () => {
   const router = useRouter();
   const { id } = router.query;

@@ -7,8 +7,8 @@ import HeroImage from "../components/HeroImage";
 import SpecialProduct from "../components/SpecialProduct";
 import prod from "../public/Trust/CASSAVA.jpg";
 import pro1 from "../public/Trust/CHILLIPEPPER.jpg";
-import { appState } from "./context/Context";
-import { AUTH, AUTH_FAIL, USER } from "./context/Types";
+import { appState } from "../components/context/Context";
+import { AUTH, AUTH_FAIL, USER } from "../components/context/Context";
 
 export default function Home() {
   const { user, dispatch } = appState();
