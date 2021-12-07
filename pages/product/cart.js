@@ -2,7 +2,7 @@ import SmallCard from "../../components/Card/SmallCard";
 import { appState } from "../../components/context/Context";
 import prod from "../../public/Trust/CASSAVA.jpg";
 import Image from "next/image";
-import { DECREASE_QTY, INCREASE_QTY, REMOVE_FROM_CART } from "../../components/context/Context";
+import { DECREASE_QTY, INCREASE_QTY, REMOVE_FROM_CART } from "../../components/context/Types";
 import { MinusIcon, PlusIcon } from "@heroicons/react/solid";
 const cart = () => {
   const {
