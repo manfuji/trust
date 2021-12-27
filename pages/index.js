@@ -9,6 +9,11 @@ import prod from "../public/Trust/CASSAVA.jpg";
 import pro1 from "../public/Trust/CHILLIPEPPER.jpg";
 import { appState } from "../components/context/Context";
 import { AUTH, AUTH_FAIL, USER } from "../components/context/Context";
+import Story from "../components/component/Story";
+import ExportPortal from "../components/component/exportPortal";
+import BuyersAndsellers from "../components/component/buyersAndsellers";
+import GlobalProducts from "../components/component/globalProducts";
+import WhyTrust from "../components/component/whyTrust";
 
 export default function Home() {
   const { user, dispatch } = appState();
@@ -60,9 +65,9 @@ const {userD,setUserD} = useState({
       <HeroImage />
       <main className="w-full my-20">
         <div className="w-full ">
-          <div className="max-w-5xl bg-gray-100 text-gray-900 mx-auto h-full p-20 rounded-sm shadow-lg">
-            <h1 className="text-4xl font-bold mb-3 text-pink-900">
-              Explore Our Services
+          <div className="max-w-5xl bg-gray-50 text-gray-900 mx-auto h-full p-20 rounded-sm shadow-lg">
+            <h1 className="text-4xl font-bold mb-3 text-pink-600">
+              Featured products
             </h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full gap-2">
               {data.map((pro) => (
@@ -80,12 +85,12 @@ const {userD,setUserD} = useState({
         </div>
 
         {/* Special Product */}
-        <div className="max-w-4xl bg-gray-100 mx-auto mt-10 rounded-sm  hover:bg-gray-100 ">
+        <div className="max-w-4xl bg-gray-50 mx-auto mt-10 rounded-sm  hover:bg-gray-100 ">
           <SpecialProduct />
         </div>
         {/* a big card for sales and information  */}
-        <div className="max-w-5xl bg-gray-100 mx-auto mt-10 rounded-sm  p-10 shadow-lg">
-          <h1 className="text-4xl font-bold text-center text-pink-900">
+        <div className="max-w-5xl bg-gray-50 mx-auto mt-10 rounded-sm  p-10 shadow-lg">
+          <h1 className="text-4xl font-bold text-center text-pink-600">
             Products And Services
           </h1>
           <div className="flex flex-col md:flex-row justify-center md:flex-wrap">
@@ -95,6 +100,31 @@ const {userD,setUserD} = useState({
               </div>
             ))}
           </div>
+        </div>
+        <div className="flex flex-col justify-center max-w-5xl mx-auto mt-24">
+          {/* story component */}
+<div>
+  <Story />
+</div>
+{/* why trust 
+ */}
+ <div className="mt-10">
+   <WhyTrust />
+ </div>
+{/* export story */}
+<div className="mt-10">
+  <ExportPortal />
+</div>
+{/* sellers and buyers */}
+<div className="mt-10">
+  <BuyersAndsellers />
+</div>
+{/* globalizations */}
+{/* why trust company */}
+
+<div>
+  <GlobalProducts />
+</div>
         </div>
       </main>
     </div>

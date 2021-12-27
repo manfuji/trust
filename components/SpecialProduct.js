@@ -4,10 +4,10 @@ const SpecialProduct = () => {
   return (
     <div className="flex flex-col md:flex-row w-full rounded-md shadow-md">
       <div className="w-full  md:h-[400px] md:w-[400px]">
-        <Image src={image} laycolout="responsive" objectFit="contain" />
+        <Image src={image} layout="responsive" objectFit="contain" />
       </div>
       <div className="w-full md:w-1/2 p-2">
-        <h1 className=" text-pink-900 font-bold text-4xl  text-center mt-1">
+        <h1 className=" text-pink-600 font-bold text-4xl  text-center mt-1">
           Special Pea Nut
         </h1>
         <p className="text-justify text-gray-600 p-4 md:p-0">
