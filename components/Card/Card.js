@@ -10,19 +10,19 @@ const Card = ({ product, prod }) => {
   console.log(cart);
   console.log(prod);
   return (
-    <div className="w-full md:w-44 flex flex-row md:flex-col rounded-xl bg-gray-50 text-gray-900 m-4 hover:bg-gray-100 shadow-lg hover:scale-105 transition duration-150 ease-in-out cursor-pointer ">
+    <div className="w-full md:w-48 flex flex-col rounded-xl bg-gray-50 text-gray-900 md:m-4 my-4 hover:bg-gray-100 shadow-lg hover:scale-105 transition duration-150 ease-in-out cursor-pointer ">
       <Link href={`/product/${prod.id}`}>
         <a>
-          <div className="relative h-44 w-44 rounded-lg">
+          <div className="relative w-full h-56 md:h-44 md:w-48 rounded-lg">
             <Image src={product} layout="fill" className=" rounded-t-md  " />
-            <div className="absolute bg-pink-600 text-white w-6 p-1 h-6 rounded  -top-1/2">
+            <div className="absolute bg-pink-600 text-white w-10 p-1 h-6 rounded  top-1/2">
               <div className="text-sm font-bold">-15%</div>
             </div>
           </div>
         </a>
       </Link>
 
-      <div className=" space-y-3 w-full md:space-x-0 md:w-44 ">
+      <div className=" space-y-3 w-full md:space-x-0 md:w-48 ">
         <Link href={`/product/${prod.id}`}>
           <a>
             <div className="text-justify items-center py-4 px-2 ">

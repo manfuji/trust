@@ -39,10 +39,6 @@ const {userD,setUserD} = useState({
     }
     // dispatch({type:USER,payload:res.data})
 
-
-
-
-
   useEffect(() => {
     axios
       .get("/api/product/product")
@@ -122,7 +118,7 @@ const {userD,setUserD} = useState({
 {/* globalizations */}
 {/* why trust company */}
 
-<div>
+<div className="mt-10">
   <GlobalProducts />
 </div>
         </div>

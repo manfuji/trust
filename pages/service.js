@@ -1,6 +1,23 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Card from "../components/Card/Card";
+import pro1 from "../public/Trust/CHILLIPEPPER.jpg";
 
 
 const service = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("/api/product/product")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        alert(err.response.data.msg);
+      });
+  }, []);
+  console.log(data);
   return (
     <div className="h-screen bg-gray-50 pb-10">
       <div className="pt-10">
@@ -28,14 +45,18 @@ const service = () => {
         </nav>
       </div>
 
-      <div className="bg-gray-100 max-w-4xl mx-auto rounded-lg drop-shadow-lg py-10">
         <div className="flex flex-col md:flex-row justify-center md:flex-wrap">
-          {/* <Card
-            product={prod}
-            name="Chilli Pepper"
-            price="15.00"
-            promo="20.00"
-          /> */}
+        <div className="w-full bg-gray-50 mx-auto mt-10 rounded-sm  p-10 shadow-lg">
+          <h1 className="text-4xl font-bold text-center text-pink-600 mb-2">
+           Agriculture
+          </h1>
+          <div className="flex flex-col md:flex-row justify-center md:flex-wrap">
+            {data.map((pro) => (
+              <div key={pro.id}>
+                <Card product={pro1} prod={pro} />
+              </div>
+            ))}
+          </div>
          
         </div>
       </div>
