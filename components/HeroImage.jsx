@@ -1,43 +1,64 @@
-
 import cover from "../public/assets/bg.jpg";
-import Image from "next/image"
+import Image from "next/image";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 function HeroImage() {
+  useEffect(() => {
+    AOS.init({
+      offset: 200,
+      duration: 1000,
+      easing: "ease-in-sine",
+      delay: 200,
+    });
+  }, []);
   return (
     <div>
       <div className=" relative h-[200px] md:h-[350px] w-[350px] sm:w-[600px] md:w-[800px]  lg:w-[1000px] xl:w-[1200px] mx-auto ">
-        <Image src={cover} layout="fill" objectFit="cover"  alt="Trust faith compapny " />
+        <Image
+          src={cover}
+          layout="fill"
+          objectFit="cover"
+          alt="Trust faith compapny "
+        />
         <div className="absolute z-30 lg:top-1/2 w-full top-3/4 text-white">
           <div className=" space-y-1">
             {" "}
             <div className="relative md:hidden flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
-                  <div className="flex-auto p-4">
-                    <div className="flex flex-wrap">
-                      <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
-                        <h5 className="text-pink-900 uppercase font-bold text-xs">
-                          Agriculture
-                        </h5>
-                        <span className="font-semibold text-xl text-pink-400">
-                          TOTAL STOCKS 350,897
-                        </span>
-                      </div>
-                      <div className="relative w-auto pl-4 flex-initial">
-                        <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-pink-500">
-                          <i className="far fa-chart-bar"></i>
-                        </div>
-                      </div>
+              <div className="flex-auto p-4">
+                <div className="flex flex-wrap">
+                  <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
+                    <h5 className="text-pink-900 uppercase font-bold text-xs">
+                      Agriculture
+                    </h5>
+                    <span className="font-semibold text-xl text-pink-400">
+                      TOTAL STOCKS 350,897
+                    </span>
+                  </div>
+                  <div className="relative w-auto pl-4 flex-initial">
+                    <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-pink-500">
+                      <i className="far fa-chart-bar"></i>
                     </div>
-                    <p className="text-sm text-gray-900 mt-4">
-                      <span className="text-emerald-500 mr-2 text-gray-400">
-                        <i className="fas fa-arrow-up "></i> 3.48%
-                      </span>
-                      <span className="whitespace-nowrap">
-                        OFF Since last month
-                      </span>
-                    </p>
                   </div>
                 </div>
+                <p className="text-sm text-gray-900 mt-4">
+                  <span className="text-emerald-500 mr-2 text-gray-400">
+                    <i className="fas fa-arrow-up "></i> 3.48%
+                  </span>
+                  <span className="whitespace-nowrap">
+                    OFF Since last month
+                  </span>
+                </p>
+              </div>
+            </div>
             <div className="md:flex md:flex-wrap hidden">
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+              <div
+                className="w-full lg:w-6/12 xl:w-3/12 px-4"
+                data-aos={"fade-left"}
+                data-aos-easing={"linear"}
+                data-aos-duration={"1500"}
+              >
                 <div className="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
                   <div className="flex-auto p-4">
                     <div className="flex flex-wrap">
@@ -66,7 +87,12 @@ function HeroImage() {
                   </div>
                 </div>
               </div>
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+              <div
+                className="w-full lg:w-6/12 xl:w-3/12 px-4"
+                data-aos={"flip-up"}
+                data-aos-easing={"linear"}
+                data-aos-duration={"1500"}
+              >
                 <div className="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
                   <div className="flex-auto p-4">
                     <div className="flex flex-wrap">
@@ -93,7 +119,12 @@ function HeroImage() {
                   </div>
                 </div>
               </div>
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+              <div
+                className="w-full lg:w-6/12 xl:w-3/12 px-4"
+                data-aos={"flip-down"}
+                data-aos-easing={"linear"}
+                data-aos-duration={"1500"}
+              >
                 <div className="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
                   <div className="flex-auto p-4">
                     <div className="flex flex-wrap">
@@ -122,7 +153,12 @@ function HeroImage() {
                   </div>
                 </div>
               </div>
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+              <div
+                className="w-full lg:w-6/12 xl:w-3/12 px-4"
+                data-aos={"fade-right"}
+                data-aos-easing={"linear"}
+                data-aos-duration={"1500"}  
+              >
                 <div className="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
                   <div className="flex-auto p-4">
                     <div className="flex flex-wrap">
@@ -156,7 +192,6 @@ function HeroImage() {
         <div className="absolute z-0 -top-0 -left-0 h-full w-full bg-black opacity-10" />
       </div>
     </div>
-  
   );
 }
 

@@ -14,30 +14,37 @@ import ExportPortal from "../components/component/exportPortal";
 import BuyersAndsellers from "../components/component/buyersAndsellers";
 import GlobalProducts from "../components/component/globalProducts";
 import WhyTrust from "../components/component/whyTrust";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 export default function Home() {
+  useEffect(() => {
+    AOS.init({
+      offset: 200,
+      duration: 600,
+      easing: "ease-in-sine",
+      delay: 100,
+    });
+  }, []);
   const { user, dispatch } = appState();
   const [data, setData] = useState([]);
-const {userD,setUserD} = useState({
-  username:"",
-  
-})
+  const { userD, setUserD } = useState({
+    username: "",
+  });
   if (user.isAuthenticated) {
-    let body = {token:user.token}
+    let body = { token: user.token };
     axios
       .post("/api/user/fetchUser", body)
       .then((res) => {
-       setUserD({
-         username:res.data.username
-       })
-
+        setUserD({
+          username: res.data.username,
+        });
       })
       .catch((err) => {
         console.log(err.response.data.msg);
       });
-      // console.log("ajska" + body.token);
-    }
-    // dispatch({type:USER,payload:res.data})
+    // console.log("ajska" + body.token);
+  }
+  // dispatch({type:USER,payload:res.data})
 
   useEffect(() => {
     axios
@@ -65,7 +72,12 @@ const {userD,setUserD} = useState({
             <h1 className="text-4xl font-bold mb-3 text-pink-600">
               Featured products
             </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full gap-2">
+            <div
+              data-aos={"fade-up-right"}
+              data-aos-easing={"linear"}
+              data-aos-duration={"1500"}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full gap-2"
+            >
               {data.map((pro) => (
                 <div key={pro.id}>
                   <SmallCard
@@ -81,7 +93,12 @@ const {userD,setUserD} = useState({
         </div>
 
         {/* Special Product */}
-        <div className="max-w-4xl bg-gray-50 mx-auto mt-10 rounded-sm  hover:bg-gray-100 ">
+        <div
+          className="max-w-4xl bg-gray-50 mx-auto mt-10 rounded-sm  hover:bg-gray-100 "
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+        >
           <SpecialProduct />
         </div>
         {/* a big card for sales and information  */}
@@ -89,7 +106,9 @@ const {userD,setUserD} = useState({
           <h1 className="text-4xl font-bold text-center text-pink-600">
             Products And Services
           </h1>
-          <div className="flex flex-col md:flex-row justify-center md:flex-wrap">
+          <div data-aos={"fade-up-left"}
+            data-aos-easing={"linear"}
+            data-aos-duration={"1700"} className="flex flex-col md:flex-row justify-center md:flex-wrap">
             {data.map((pro) => (
               <div key={pro.id}>
                 <Card product={pro1} prod={pro} />
@@ -99,28 +118,32 @@ const {userD,setUserD} = useState({
         </div>
         <div className="flex flex-col justify-center max-w-5xl mx-auto mt-24">
           {/* story component */}
-<div>
-  <Story />
-</div>
-{/* why trust 
- */}
- <div className="mt-10">
-   <WhyTrust />
- </div>
-{/* export story */}
-<div className="mt-10">
-  <ExportPortal />
-</div>
-{/* sellers and buyers */}
-<div className="mt-10">
-  <BuyersAndsellers />
-</div>
-{/* globalizations */}
-{/* why trust company */}
+          <div data-aos={"fade-up-right"}
+              data-aos-easing={"linear"}
+              data-aos-duration={"1500"}>
+            <Story />
+          </div>
+          {/* why trust
+           */}
+          <div className="mt-10" data-aos={"fade-up-left"}
+              data-aos-easing={"linear"}
+              data-aos-duration={"1800"}>
+            <WhyTrust />
+          </div>
+          {/* export story */}
+          <div className="mt-10">
+            <ExportPortal />
+          </div>
+          {/* sellers and buyers */}
+          <div className="mt-10">
+            <BuyersAndsellers />
+          </div>
+          {/* globalizations */}
+          {/* why trust company */}
 
-<div className="mt-10">
-  <GlobalProducts />
-</div>
+          <div className="mt-10">
+            <GlobalProducts />
+          </div>
         </div>
       </main>
     </div>
