@@ -67,16 +67,15 @@ export default function Home() {
 
       <HeroImage />
       <main className="w-full my-20">
-        <div className="w-full ">
-          <div className="max-w-5xl bg-gray-50 text-gray-900 mx-auto h-full p-20 rounded-sm shadow-lg">
+        <div className="w-full">
+          <div className="md:max-w-5xl bg-gray-50 text-gray-900 mx-auto h-full p-20 rounded-sm shadow-lg">
             <h1 className="text-4xl font-bold mb-3 text-pink-600">
               Featured products
             </h1>
-            <div
-              data-aos={"fade-up-right"}
-              data-aos-easing={"linear"}
-              data-aos-duration={"1500"}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full gap-2"
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full gap-2"
+            data-aos="fade-up-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="2000"
             >
               {data.map((pro) => (
                 <div key={pro.id}>
@@ -106,9 +105,11 @@ export default function Home() {
           <h1 className="text-4xl font-bold text-center text-pink-600">
             Products And Services
           </h1>
-          <div data-aos={"fade-up-left"}
-            data-aos-easing={"linear"}
-            data-aos-duration={"1700"} className="flex flex-col md:flex-row justify-center md:flex-wrap">
+          <div className="flex flex-col md:flex-row justify-center md:flex-wrap"
+          data-aos="zoom-up-right"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+          >
             {data.map((pro) => (
               <div key={pro.id}>
                 <Card product={pro1} prod={pro} />
@@ -118,16 +119,16 @@ export default function Home() {
         </div>
         <div className="flex flex-col justify-center max-w-5xl mx-auto mt-24">
           {/* story component */}
-          <div data-aos={"fade-up-right"}
-              data-aos-easing={"linear"}
-              data-aos-duration={"1500"}>
+          <div>
             <Story />
           </div>
           {/* why trust
            */}
-          <div className="mt-10" data-aos={"fade-up-left"}
-              data-aos-easing={"linear"}
-              data-aos-duration={"1800"}>
+          <div className="mt-10"
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+          >
             <WhyTrust />
           </div>
           {/* export story */}
@@ -135,13 +136,22 @@ export default function Home() {
             <ExportPortal />
           </div>
           {/* sellers and buyers */}
-          <div className="mt-10">
+          <div className="mt-10"
+          data-aos="flip-right"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+          >
             <BuyersAndsellers />
           </div>
           {/* globalizations */}
           {/* why trust company */}
 
-          <div className="mt-10">
+          <div
+            className="flex flex-col justify-center max-w-5xl mx-auto mt-24"
+            //  data-aos={"fade-left"}
+            //  data-aos-easing={"linear"}
+            //  data-aos-duration={"1500"}
+          >
             <GlobalProducts />
           </div>
         </div>

@@ -15,7 +15,7 @@ function HeroImage() {
   }, []);
   return (
     <div>
-      <div className=" relative h-[200px] md:h-[350px] w-[350px] sm:w-[600px] md:w-[800px]  lg:w-[1000px] xl:w-[1200px] mx-auto ">
+      <div className=" relative h-[200px] md:h-[350px] w-[250px] sm:w-[600px] md:w-[750px]  lg:w-[1000px] xl:w-[1200px] mx-auto ">
         <Image
           src={cover}
           layout="fill"
@@ -25,7 +25,7 @@ function HeroImage() {
         <div className="absolute z-30 lg:top-1/2 w-full top-3/4 text-white">
           <div className=" space-y-1">
             {" "}
-            <div className="relative md:hidden flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+            <div className="relative lg:hidden flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
               <div className="flex-auto p-4">
                 <div className="flex flex-wrap">
                   <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
@@ -52,14 +52,14 @@ function HeroImage() {
                 </p>
               </div>
             </div>
-            <div className="md:flex md:flex-wrap hidden">
+            <div className="lg:flex flex-wrap hidden">
               <div
                 className="w-full lg:w-6/12 xl:w-3/12 px-4"
                 data-aos={"fade-left"}
                 data-aos-easing={"linear"}
                 data-aos-duration={"1500"}
               >
-                <div className="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+                <div className="relative flex flex-col min-w-80 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
                   <div className="flex-auto p-4">
                     <div className="flex flex-wrap">
                       <div className="relative w-full pr-4 max-w-full flex-grow flex-1">

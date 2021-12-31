@@ -53,7 +53,7 @@ const ExportPortal = () => {
           </div>
         </div>
 
-        <div className="relative w-full h-full lg:w-[430px]  lg:h-[430px]">
+        <div className="relative w-full h-full lg:w-[430px] mt-20 md:mt-0  lg:h-[430px]">
           <Image
             src={img1}
             layout="responsive"

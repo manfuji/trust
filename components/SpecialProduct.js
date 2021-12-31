@@ -10,7 +10,7 @@ const SpecialProduct = () => {
         <h1 className=" text-pink-600 font-bold text-4xl mb-4 md:mb-8 text-center mt-1">
           Special Pea Nut
         </h1>
-        <p className="text-justify ml-8 text-gray-600 p-4 md:p-0">
+        <p className="text-justify md:ml-8 text-gray-600 p-4 md:p-0">
           Anim irure dolore fugiat exercitation incididunt aute sunt cupidatat
           tempor. Dolor ad est laboris consectetur ea. Est sit officia
           consectetur id incididunt dolore ullamco. Deserunt cupidatat cillum
