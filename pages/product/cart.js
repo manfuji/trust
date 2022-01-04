@@ -145,7 +145,7 @@ const cart = () => {
           <div className="pt-10 max-w-3xl mx-auto mt-10" >
           <div className=" h-48 w-full flex-1 mx-auto rounded-md text-2xl justify-center font-bold text-pink-600 p-2 bg-gray-100">
             <span>
-              Related Products
+              Other Products You may want to add
             </span>
             <div>
               

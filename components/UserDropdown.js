@@ -3,7 +3,9 @@ import p1 from "../public/Trust/CASSAVA.jpg";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link"
+import { appState } from "./context/Context";
 const UserDropdown = () => {
+  const {user,disptch} = appState();
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef();
@@ -52,6 +54,18 @@ const UserDropdown = () => {
         }
         style={{ minWidth: "12rem" }}
       >
+         <Link
+          href="/account/profile"
+          className={
+            "text-sm py-2 capitalize px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+          }
+          onClick={(e) => e.preventDefault()}
+        >
+          <a className="capitalize">
+
+           {user.username}'s Profile
+          </a>
+        </Link>
         <li>
         <Link
           href="#pablo"
@@ -77,15 +91,7 @@ const UserDropdown = () => {
         </li>
         <li>
 
-        <Link
-          href="#pablo"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-          onClick={(e) => e.preventDefault()}
-        >
-          Profile
-        </Link>
+       
           </li>
         <li>
         <div className="h-0 my-2 border border-solid border-blueGray-100 " />

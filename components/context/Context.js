@@ -8,7 +8,9 @@ const Context = ({ children }) => {
     cart: [],
     isAuthenticated: false,
     isAdmin: false,
-    userDetails: {},
+    username:"",
+    profilePic:"",
+    // userDetails: {},
   });
   // useEffect(() => {
   //  localStorage.setItem("user",JSON.stringify(user))

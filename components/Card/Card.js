@@ -43,7 +43,7 @@ const Card = ({ product, prod }) => {
         </Link>
 
         <div className="flex-col">
-          {cart.some((c) => c.id === prod.id) ? (
+          {cart?.some((c) => c.id === prod.id) ? (
             <button
               onClick={() => {
                 dispatch({

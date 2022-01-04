@@ -34,11 +34,14 @@ function Login() {
     axios
       .post("/api/user/auth", formdata, config)
       .then((res) => {
+        console.log(res.data)
         dispatch({
           type: AUTH,
           payload: {
-            token: res.data,
-            isAdmin: false,
+            token: res.data.token,
+            isAdmin: res.data.findUser.isAdmin,
+            username:res.data.findUser.username,
+            profilePic:res.data.findUser.profilePic
           },
         });
         router.push("/");

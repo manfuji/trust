@@ -1,4 +1,8 @@
+import { appState } from "../components/context/Context";
+
 const contact = () => {
+  const {user:{userDetails} ,dispatch} = appState()
+  console.log(userDetails)
   return (
     <div className="bg-gray-50 w-full h-full py-10">
       <div className="bg-gray-100 max-w-2xl mx-auto mb-3 p-10 rounded-lg">

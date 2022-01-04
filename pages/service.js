@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Link from "next/link"
 import Card from "../components/Card/Card";
 import pro1 from "../public/Trust/CHILLIPEPPER.jpg";
 
@@ -24,7 +25,9 @@ const service = () => {
         <nav className="p-4 bg-blue-800 mx-8 mb-10 rounded-xl drop-shadow-lg">
           <ul className="flex flex-row space-x-2 text-gray-100 pl-40 md:pl-0 font-semibold text-md items-center text-center justify-center overflow-x-scroll scrollbar-hide">
             <li className=" active:bg-blue-700 hover:scale-105 cursor-pointer py-2 rounded-md px-1">
+              <Link href="/category/ckvzhkyf602164ud2k5l8hds6">
               Agriculture
+              </Link>
             </li>
             <li className=" active:bg-blue-700 hover:scale-105 cursor-pointer py-2 rounded-md px-1">
               Cosmetic and Fashion{" "}

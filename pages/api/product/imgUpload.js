@@ -15,7 +15,7 @@ const apiRoute = nextConnect({
     res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
   },
 });
-firebase
+
 apiRoute.use(upload.array('file'));
 
 apiRoute.post((req, res) => {

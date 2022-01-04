@@ -1,21 +1,38 @@
 import axios from "axios";
-import { useState } from "react";
+import {  useState } from "react";
+import { appState } from "../../components/context/Context";
 
 function CreateProduct() {
+  const {user, dispatch} = appState()
+
+const  [file,setFile] = useState(null),
+  [imgUrl,setImgUrl] = useState("")
+
+
   const initialState = {
     productName: "",
     productPrice: 0,
     description: "",
     discountPrice: 0,
-    slug: "sluslug",
-    imageUrl: "",
+    slug: "",
+    imageUrl: imgUrl,
     createdBy: "fuji",
     category: "",
     published: true,
     token:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJja3Z5ZzM3amcwMDUzNHVkMjlkaHc5NXFsIiwiaWF0IjoxNjM3NjU1MDcxLCJleHAiOjE2Mzc2NjIyNzF9.fjQyUj5eEgx47GXLAodLIFiStl6rDoe822o3lXYorV4",
+      user.token,
   };
   const [formdata, setFormdata] = useState(initialState);
+ 
+  console.log(file?.name)
+  if(!file==="null"){
+    setImgUrl(file.name)
+  }
+  // let form = new FormData();     
+
+  // form.append("file",file)
+ 
+
   const onChange = (e) => {
     setFormdata({
       ...formdata,
@@ -25,7 +42,14 @@ function CreateProduct() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(formdata);
+   
+    axios.post("http://localhost:3000/api/product/imgUpload")
+    .then((res)=>{
+      alert(res.data.data)
+    }).catch(err=>{
+      alert(err.response.data.error)
+    })
+    console.log(formdata.imageUrl);
     const config = {
       headers: {
         "content-type": "application/json",
@@ -91,12 +115,19 @@ function CreateProduct() {
             />
             <input
               type="text"
-              placeholder="image Url"
+              placeholder={formdata.imageUrl}  
               onChange={onChange}
               name="imageUrl"
-              value={formdata.imageUrl}
+              value={file?.name}
               className="px-10 py-2 outline-none focus:ring-1 ring-pink-400 rounded-md placeholder-gray-400"
             />
+             <input
+              type="file"
+              onChange={(e)=>setFile(e.target.files[0])}
+              name="imageUrl"
+              className="px-10 py-2 outline-none focus:ring-1 ring-pink-400 rounded-md placeholder-gray-400"
+            />
+          
             <button
               type="submit"
               className="mt-2 px-8 py-2 text-lg text-white bg-green-700 rounded-lg hover:bg-green-600 active:bg-green-500 focus:ring-1 ring-green-200"

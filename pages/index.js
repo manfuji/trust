@@ -8,7 +8,6 @@ import SpecialProduct from "../components/SpecialProduct";
 import prod from "../public/Trust/CASSAVA.jpg";
 import pro1 from "../public/Trust/CHILLIPEPPER.jpg";
 import { appState } from "../components/context/Context";
-import { AUTH, AUTH_FAIL, USER } from "../components/context/Context";
 import Story from "../components/component/Story";
 import ExportPortal from "../components/component/exportPortal";
 import BuyersAndsellers from "../components/component/buyersAndsellers";
@@ -25,27 +24,11 @@ export default function Home() {
       delay: 100,
     });
   }, []);
-  const { user, dispatch } = appState();
+  const { dispatch, user } = appState();
   const [data, setData] = useState([]);
-  const { userD, setUserD } = useState({
-    username: "",
-  });
-  if (user.isAuthenticated) {
-    let body = { token: user.token };
-    axios
-      .post("/api/user/fetchUser", body)
-      .then((res) => {
-        setUserD({
-          username: res.data.username,
-        });
-      })
-      .catch((err) => {
-        console.log(err.response.data.msg);
-      });
-    // console.log("ajska" + body.token);
-  }
-  // dispatch({type:USER,payload:res.data})
 
+
+  console.log(user);
   useEffect(() => {
     axios
       .get("/api/product/product")
@@ -72,10 +55,11 @@ export default function Home() {
             <h1 className="text-4xl font-bold mb-3 text-pink-600">
               Featured products
             </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full gap-2"
-            data-aos="fade-up-left"
-            data-aos-easing="ease-out-cubic"
-            data-aos-duration="2000"
+            <div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full gap-2"
+              data-aos="fade-up-left"
+              data-aos-easing="ease-out-cubic"
+              data-aos-duration="2000"
             >
               {data.map((pro) => (
                 <div key={pro.id}>
@@ -105,10 +89,11 @@ export default function Home() {
           <h1 className="text-4xl font-bold text-center text-pink-600">
             Products And Services
           </h1>
-          <div className="flex flex-col md:flex-row justify-center md:flex-wrap"
-          data-aos="zoom-up-right"
-          data-aos-easing="ease-out-cubic"
-          data-aos-duration="2000"
+          <div
+            className="flex flex-col md:flex-row justify-center md:flex-wrap"
+            data-aos="zoom-up-right"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="2000"
           >
             {data.map((pro) => (
               <div key={pro.id}>
@@ -124,10 +109,11 @@ export default function Home() {
           </div>
           {/* why trust
            */}
-          <div className="mt-10"
-          data-aos="flip-left"
-          data-aos-easing="ease-out-cubic"
-          data-aos-duration="2000"
+          <div
+            className="mt-10"
+            data-aos="flip-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="2000"
           >
             <WhyTrust />
           </div>
@@ -136,10 +122,11 @@ export default function Home() {
             <ExportPortal />
           </div>
           {/* sellers and buyers */}
-          <div className="mt-10"
-          data-aos="flip-right"
-          data-aos-easing="ease-out-cubic"
-          data-aos-duration="2000"
+          <div
+            className="mt-10"
+            data-aos="flip-right"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="2000"
           >
             <BuyersAndsellers />
           </div>

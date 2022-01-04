@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import logo from "../../public/LOGO.jpg";
 import Link from "next/link";
-import { MenuIcon,ShoppingCartIcon, StopIcon,  } from "@heroicons/react/solid";
+import { MenuIcon,ShoppingCartIcon, StopIcon,ArrowUpIcon  } from "@heroicons/react/solid";
 import { appState } from "../context/Context";
 import { useRouter } from "next/dist/client/router";
 import UserDropdown from "../UserDropdown";
@@ -24,7 +24,10 @@ function Header() {
             <Image src={logo} layout="fill" />
           </div>
           <button className="lg:hidden" onClick={() => setToggle(!toggle)}>
-            <MenuIcon className="h-8 w-8 inline" />
+            {toggle?(
+              <MenuIcon className="h-8 w-8 inline" />
+            ):(<ArrowUpIcon className="h-8 w-8 inline" />)}
+            
           </button>
         </div>
 
@@ -56,10 +59,12 @@ function Header() {
           className={`lg:inline mt-4 lg:mt-0 ${toggle ? "hidden" : "inline"} `}
         >
           <ul className="flex flex-row space-x-2 mr-4">
+
             <li className="px-8 py-2 lg:px-4 focus:bg-pink-500 text-lg cursor-pointer hover:bg-pink-500 rounded-md">
               {" "}
-              <Link href="/product/cart"><a> <ShoppingCartIcon className="h-8 w-8 inline-flex" /> <span className="bg-gray-200 text-pink-600 -ml-3 px-1 rounded-xl -top-9 bg-transparent">{user.cart.length}</span> </a></Link>{" "}
+              <Link href="/product/cart"><a> <ShoppingCartIcon className="h-8 w-8 inline-flex" /> <span className="bg-gray-200 text-pink-600 -ml-3 px-1 rounded-xl -top-9 bg-transparent">{user.cart?.length}</span> </a></Link>{" "}
             </li>
+
             {user.isAuthenticated == false ? (
               <>
                 <li className="px-8 py-2 lg:px-4 focus:bg-pink-500 text-lg cursor-pointer hover:bg-pink-500 rounded-md">
@@ -74,6 +79,12 @@ function Header() {
             ) : (
               <>
               
+              <li>
+                <span className="text-white font-sans font-bold">
+                  Welcome {user.username}
+                </span>
+
+              </li>
               <li>
                 <UserDropdown />
 
