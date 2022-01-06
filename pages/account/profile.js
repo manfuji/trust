@@ -6,6 +6,7 @@ import {
   MapIcon,
 } from "@heroicons/react/solid";
 import Image from "next/image";
+import Link from "next/link"
 import { appState } from "../../components/context/Context";
 import image from "../../public/assets/bg.jpg";
 export default function Profile() {
@@ -112,13 +113,13 @@ export default function Profile() {
                         artist of considerable range.
                       </p>
                       <div className="flex flex-col items-center">
-                        <a
-                          href="#pablo"
+                        <Link
+                          href="/account/shipment"
                           className="font-normal block text-pink-500"
                           onClick={(e) => e.preventDefault()}
                         >
-                          Show more
-                        </a>
+                          Add shipment Address
+                        </Link>
                         <ChevronDoubleDownIcon className="h-4 w-4 text-pink-400 inline-flex animate-ping" />
                       </div>
                     </div>

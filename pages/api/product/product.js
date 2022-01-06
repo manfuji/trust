@@ -13,7 +13,7 @@ export default async function Product(req, res) {
         description,
         createdBy,
         category,
-        imageUrl,
+        imgUrl,
       } = req.body;
       const verifyToken = jwt.verify(token, process.env.secret);
       const checkUser = await prisma.user.findUnique({
@@ -26,10 +26,10 @@ export default async function Product(req, res) {
           data: {
             productName: productName,
             productPrice: parseInt(productPrice),
-            slug: slug,
+            slug: productName,
             category: category,
             createdBy: createdBy,
-            imageUrl: imageUrl,
+            imageUrl: imgUrl,
             description: description,
             discountPrice: discountPrice,
           },

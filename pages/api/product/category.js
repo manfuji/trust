@@ -81,7 +81,7 @@ export default async function category(req, res) {
         res.status(400).json({ msg: "Only admins can delete category" });
       }
     } catch (err) {
-      res.status(500).json("server Error"+err);
+      res.status(500).json({msg:"server Error"+err});
     }
   }
 }

@@ -7,7 +7,9 @@ import Image from "next/image";
 import { appState } from "../../components/context/Context";
 import { ADD_TO_CART, REMOVE_FROM_CART } from "../../components/context/Types";
 import SmallCard from "../../components/Card/SmallCard";
+import {Circle} from "better-react-spinkit"
 const singleProduct = () => {
+  const [isloading,setIsloading] = useState(true)
   const router = useRouter();
   const { id } = router.query;
   const [product, setProduct] = useState({
@@ -18,6 +20,7 @@ const singleProduct = () => {
     cat: "",
     description: "",
     catId:"",
+    imgurl:""
   });
   const {
     user: { cart },
@@ -44,9 +47,11 @@ const singleProduct = () => {
           id: res.data.id,
           cat: res.data.Category.catName,
           description: res.data.description,
-          catId:res.data.category
+          catId:res.data.category,
+          imgurl:res.data.imageUrl
         });
         console.log(res.data);
+      setIsloading(false)
       })
       .catch((err) => {
         // alert(err.response.data.msg);
@@ -90,12 +95,15 @@ const singleProduct = () => {
   console.log(product);
   console.log(related)
   return (
+    
+  
     <div className="bg-gray-50 h-full w-full">
       <div className="pb-10" />
 
       <div className="flex flex-col sm:flex-row w-full">
         <div className="w-full  md:h-[400px] md:w-[400px]">
-          <Image src={pro1} laycolout="responsive" objectFit="contain" />
+          
+          <Image src={require(`../../public/uploads/${product.imgurl||"bg.jpg"}`).default} laycolout="responsive" objectFit="contain" />
         </div>
 
         <div className="w-full md:w-1/2 p-2 justify-between">

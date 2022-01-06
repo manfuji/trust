@@ -64,9 +64,9 @@ export default function Home() {
               {data.map((pro) => (
                 <div key={pro.id}>
                   <SmallCard
-                    image={pro1}
+                    image={require(`../public/uploads/${pro.imageUrl}`).default}
                     title={pro.productName}
-                    cat={pro?.Category.catName}
+                    cat={pro?.Category?.catName}
                   />
                 </div>
               ))}

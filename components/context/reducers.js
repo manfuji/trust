@@ -18,7 +18,8 @@ export const Reducers = (state, action) => {
         isAdmin: action.payload.isAdmin,
         token: action.payload.token,
         username:action.payload.username,
-        profilePic:action.payload.profilePic
+        profilePic:action.payload.profilePic,
+        userId:action.payload.userId
       };
 
     case LOGOUT:

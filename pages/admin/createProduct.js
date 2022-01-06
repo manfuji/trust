@@ -1,13 +1,24 @@
 import axios from "axios";
-import {  useState } from "react";
+import { useEffect, useState } from "react";
 import { appState } from "../../components/context/Context";
-
+import { FormData } from "formdata-node";
+import { Fragment } from "react";
 function CreateProduct() {
-  const {user, dispatch} = appState()
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    axios
+      .get("/api/product/category")
+      .then((res) => {
+        setCategories(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => alert(err.response.data.msg));
+  }, []);
 
-const  [file,setFile] = useState(null),
-  [imgUrl,setImgUrl] = useState("")
+  const { user, dispatch } = appState();
 
+  const [file, setFile] = useState(null),
+    [imgUrl, setImgUrl] = useState("");
 
   const initialState = {
     productName: "",
@@ -15,23 +26,16 @@ const  [file,setFile] = useState(null),
     description: "",
     discountPrice: 0,
     slug: "",
-    imageUrl: imgUrl,
-    createdBy: "fuji",
+    createdBy: user.username,
     category: "",
     published: true,
-    token:
-      user.token,
+    token: user.token,
   };
   const [formdata, setFormdata] = useState(initialState);
- 
-  console.log(file?.name)
-  if(!file==="null"){
-    setImgUrl(file.name)
-  }
-  // let form = new FormData();     
 
-  // form.append("file",file)
- 
+  let form = new FormData();
+
+  form.append("file", file);
 
   const onChange = (e) => {
     setFormdata({
@@ -39,16 +43,43 @@ const  [file,setFile] = useState(null),
       [e.target.name]: e.target.value,
     });
   };
+  const {
+    productName,
+    productPrice,
+    description,
+    discountPrice,
+    slug,
+    createdBy,
+    category,
+    published,
+
+    token,
+  } = formdata;
 
   const onSubmit = (e) => {
     e.preventDefault();
-   
-    axios.post("http://localhost:3000/api/product/imgUpload")
-    .then((res)=>{
-      alert(res.data.data)
-    }).catch(err=>{
-      alert(err.response.data.error)
-    })
+
+    const body = {
+      productName,
+      productPrice,
+      description,
+      discountPrice,
+      slug,
+      createdBy,
+      category,
+      published,
+      imgUrl,
+      token,
+    };
+
+    axios
+      .post("/api/product/imgUpload", form)
+      .then((res) => {
+        alert(res.data.data);
+      })
+      .catch((err) => {
+        alert(err.response.data.error);
+      });
     console.log(formdata.imageUrl);
     const config = {
       headers: {
@@ -56,15 +87,15 @@ const  [file,setFile] = useState(null),
       },
     };
     axios
-      .post("/api/product/product", formdata, config)
+      .post("/api/product/product", body, config)
       .then((res) => {
         console.log(res.data);
       })
       .catch((err) => {
         alert(err.response.data.msg);
       });
-    console.log(formdata);
   };
+  console.log(categories);
   return (
     <div className="bg-blue-600 py-20">
       <div className="w-full sm:max-w-2xl sm:mx-auto max-h-full  p-10 bg-gray-100 shadow-lg rounded-lg">
@@ -105,29 +136,36 @@ const  [file,setFile] = useState(null),
               placeholder="description"
               className="px-10 py-2 outline-none focus:ring-1 ring-pink-400 rounded-md placeholder-gray-400"
             />
+
+            <div className="">
+              <select
+                className="px-10 py-1 outline-none focus:ring-1 ring-pink-400 rounded-md placeholder-gray-400"
+                name="category"
+                id=""
+                onChange={onChange}
+              >
+                {categories.map((cats) => (
+                  <Fragment key={cats.key}>
+                    <option>
+                      select Categories
+                    </option>
+                    <option  value={cats.id}>
+                      {cats.catName}
+                    </option>
+                  </Fragment>
+                ))}
+              </select>
+            </div>
             <input
-              type="text"
-              name="category"
-              value={formdata.category}
-              onChange={onChange}
-              placeholder=" category"
-              className="px-10 py-2 outline-none focus:ring-1 ring-pink-400 rounded-md placeholder-gray-400"
-            />
-            <input
-              type="text"
-              placeholder={formdata.imageUrl}  
-              onChange={onChange}
-              name="imageUrl"
-              value={file?.name}
-              className="px-10 py-2 outline-none focus:ring-1 ring-pink-400 rounded-md placeholder-gray-400"
-            />
-             <input
               type="file"
-              onChange={(e)=>setFile(e.target.files[0])}
+              onChange={(e) => {
+                setFile(e.target.files[0]);
+                setImgUrl(e.target.files[0].name);
+              }}
               name="imageUrl"
               className="px-10 py-2 outline-none focus:ring-1 ring-pink-400 rounded-md placeholder-gray-400"
             />
-          
+
             <button
               type="submit"
               className="mt-2 px-8 py-2 text-lg text-white bg-green-700 rounded-lg hover:bg-green-600 active:bg-green-500 focus:ring-1 ring-green-200"

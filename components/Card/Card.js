@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { appState } from "../context/Context";
 import Link from "next/link";
+import s from "../../public/assets/bg.jpg"
 import { ADD_TO_CART, REMOVE_FROM_CART } from "../context/Types";
 const Card = ({ product, prod }) => {
   const {
@@ -9,12 +10,13 @@ const Card = ({ product, prod }) => {
   } = appState();
   console.log(cart);
   console.log(prod);
+ 
   return (
     <div className="w-full md:w-48 flex flex-col rounded-xl bg-gray-50 text-gray-900 md:m-4 my-4 hover:bg-gray-100 shadow-lg hover:scale-105 transition duration-150 ease-in-out cursor-pointer ">
       <Link href={`/product/${prod.id}`}>
         <a>
           <div className="relative w-full h-56 md:h-44 md:w-48 rounded-lg">
-            <Image src={product} layout="fill" className=" rounded-t-md  " />
+            <Image src={require(`../../public/uploads/${prod.imageUrl}`).default} layout="fill" className=" rounded-t-md  " />
             <div className="absolute bg-pink-600 text-white w-10 p-1 h-6 rounded  top-1/2">
               <div className="text-sm font-bold">-15%</div>
             </div>
@@ -29,7 +31,7 @@ const Card = ({ product, prod }) => {
               <h1 className="text-pink-600 font-bold text-xl tracking-widest">
                 {prod.productName}
               </h1>
-              <div>{prod.description}</div>
+              <div className="truncate">{prod.description}</div>
               <div className="flex flex-row justify-between">
                 <span className="text-md text-gray-50 line-through bg-gray-700 rounded-xl text-sm px-2">
                   Ghc {prod.discountPrice}

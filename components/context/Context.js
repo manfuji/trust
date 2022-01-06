@@ -10,6 +10,7 @@ const Context = ({ children }) => {
     isAdmin: false,
     username:"",
     profilePic:"",
+    userId:""
     // userDetails: {},
   });
   // useEffect(() => {

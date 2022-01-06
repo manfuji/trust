@@ -41,7 +41,8 @@ function Login() {
             token: res.data.token,
             isAdmin: res.data.findUser.isAdmin,
             username:res.data.findUser.username,
-            profilePic:res.data.findUser.profilePic
+            profilePic:res.data.findUser.profilePic,
+            userId:res.data.findUser.id
           },
         });
         router.push("/");

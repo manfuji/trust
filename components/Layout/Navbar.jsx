@@ -51,6 +51,17 @@ function Header() {
               {" "}
               <Link href="/about"> About </Link>{" "}
             </li>
+            {
+              user.isAdmin?(
+                <li>
+                 <li className="px-8 py-2 lg:px-4 focus:bg-pink-500 text-lg cursor-pointer hover:bg-pink-500 rounded-md">
+              {" "}
+              <Link href="/dashboard"> Dashboard </Link>{" "}
+            </li>
+
+              </li>
+              ):""
+            }
           </ul>
         </div>
         {/* End of the Navbar
@@ -85,6 +96,7 @@ function Header() {
                 </span>
 
               </li>
+
               <li>
                 <UserDropdown />
 

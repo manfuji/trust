@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 export default async function shipping(req, res) {
   if (req.method === "POST") {
     try {
-      const { token, country, city, address, zipcode, orderId, username } =
+      const { token, country, city, address, zipcode } =
         req.body;
       const verifyToken = jwt.verify(token, process.env.secret);
       const checkUser = await prisma.user.findUnique({
@@ -19,7 +19,7 @@ export default async function shipping(req, res) {
             city: city,
             address: address,
             zipcode: zipcode,
-            user: checkUser.username,
+            user: checkUser.id,
           },
         });
         res.status(200).json(newshippingAddress);
@@ -27,14 +27,24 @@ export default async function shipping(req, res) {
         res.status(400).json({ msg: "Only owners can add shippingAddress" });
       }
     } catch (err) {
-      res.status(500).json("server Error" + err);
+      res.status(500).json("server ErrorderIdor" + err);
     }
   } else if (req.method === "GET") {
-    const shippingAddress = await prisma.shippingAddress.findMany();
+
+    const {token} = req.body;
+      const verifyToken = jwt.verify(token, process.env.secret).userId;
+
+    const shippingAddress = await prisma.shippingAddress.findMany(
+    {
+      where:{
+        id:verifyToken
+      }
+    }
+    );
     res.status(200).json(shippingAddress);
   } else if (req.method === "PUT") {
     try {
-      const { token, country, city, address, zipcode, orderId, id } = req.body;
+      const { token, country, city, address, zipcode, id } = req.body;
       const verifyToken = jwt.verify(token, process.env.secret);
       const checkUser = await prisma.user.findUnique({
         where: {
